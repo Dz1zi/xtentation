@@ -1,0 +1,15 @@
+1.icon{
+    1.warning
+    2.succest
+    3.error
+    4.question
+}
+
+2.didalam Swal.fire ada{
+    1.title
+    2.icon
+    3.footer
+    4.confirmButtonColor
+    5.cancleButtonColor
+    6.comfirmButtonText
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Agak Gelay</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/ff3a2a3758.js" crossorigin="anonymous"></script>
+
+    <style>
+      body {
+        background-color: #c2f2ff;
+      }
+      .lanjutkan {
+        text-decoration: none;
+        color: #2778c4;
+        font-family: sans-serif;
+      }
+      .container {
+        width: 400px;
+        height: 200px;
+        padding: 20px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-top: -130px;
+        margin-left: -220px;
+      }
+    </style>
+  </head>
+  <body></body>
+  <script src="dist/sweetalert2.all.min.js"></script>
+  <script>
+    setTimeout(function () {
+      Swal.fire({
+        title: "Hay Sahabat",
+        text: " Assalamualaikum, gimna kabarmu?",
+        footer: "<a>Copyright Dz1zi</a>",
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Next",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let timerInterval;
+          Swal.fire({
+            title: "Tunggu Sebentar yaa.",
+            html: "Sabarrr <b></b> milidetik lagi hehehe.",
+            footer: "<a>Copyright Dz1zi</a>",
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+              Swal.showLoading();
+              timerInterval = setInterval(() => {
+                const content = Swal.getContent();
+                if (content) {
+                  const b = content.querySelector("b");
+                  if (b) {
+                    b.textContent = Swal.getTimerLeft();
+                  }
+                }
+              }, 100);
+            },
+            willClose: () => {
+              clearInterval(timerInterval);
+            },
+          }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+              Swal.fire({
+                title: "Awas aja kalau kamu bohong",
+                icon: "error",
+                footer: "<a>Copyright Dz1zi</a>",
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Iyaa",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire({
+                    title: "Lanjutkan atau Tidak?",
+                    confirmButtonText: "TIDAK",
+                    footer: '<a href="xxd2.html" class="lanjutkan" ><b>LANJUTKAN</b></a>',
+                  });
+                }
+              });
+            }
+          });
+        }
+      });
+    }, 1000);
+  </script>
+</html>
